@@ -46,9 +46,9 @@ After installing prerequisites, from the cmd line, the server is now ready for t
 `sudo apt install awscli -y`\
 `sudo apt-get install mysql-client -y`
 
-Download the app files and database dump files from a remote repo. I put mine in an S3 bucket.
+Download the app files and database dump files from a remote repo. I put mine in an S3 bucket. *You can download and use the files from this repo.*
 - `wget https://eve-migrate-files.s3.us-east-2.amazonaws.com/app.zip`
-- `https://eve-migrate-files.s3.us-east-2.amazonaws.com/dump.sql`
+- `wget https://eve-migrate-files.s3.us-east-2.amazonaws.com/dump.sql`
 
 #### Database Server (RDS)
 Once again, based on findings from the Planning phase, I have been able to determine that the appropriate database Engine type to be used for hosting the database server is MySQL. In the Network settings, place the database in the Prod VPC earlier created, however choose No for Public Access. *Best practices recommends not to expose your db server to the public. All communications with your DB, should originate from the App Server*. In your Security Group, create a new SG and allow access only from the Private IP of the app instance. Then Create database.
